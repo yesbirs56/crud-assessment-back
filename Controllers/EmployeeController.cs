@@ -18,9 +18,9 @@ namespace EmployeeCrud.Controllers
         {
             using (EmployeeContext context = new EmployeeContext())
             {
-                var employees = context.Employees.Select(e=>new { e.EmployeeId, e.Name,e.DOJ,e.Mobile,e.Email,e.Address,e.Department.DptName,Salary=e.Salary.SalaryAmount }).ToList();
-                var employees1 = employees.OrderByDescending(e => e.Salary);
-                return Ok(employees1.ToList());
+                var employees = context.Employees.Select(e=>new { e.EmployeeId, e.Name,e.DOJ,e.Mobile,e.Email,e.Address,e.Department.DptName,Salary=e.Salary.SalaryAmount }).OrderByDescending(s => s.Salary).ToList();
+                //var employees1 = employees.OrderByDescending(e => e.Salary);
+                return Ok(employees.ToList());
             }
         }
         [HttpGet]
